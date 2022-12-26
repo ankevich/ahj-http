@@ -5,7 +5,7 @@
     <title>App</title>
   </head>
   <body>
-    <button id="btn">Добавить тикет</button>
+    <button id="add-ticket-button">Добавить тикет</button>
     <div class="ticket">
       <div>☑️</div>
       <span class="description">Поменять краску в принтере, ком. 404</span>
@@ -27,18 +27,22 @@
       <button>🖊️</button>
       <button>⚔️</button>
     </div>
-    <div class="createTicket">
+    <div id="create-ticket-modal" class="hidden modal">
       <span>Добавить тикет </span>
       <input type="text" placeholder="Описание" />
       <textarea type="text" placeholder="Подробное описание"></textarea>
-      <button>OK</button>
-      <button>Отмена</button>
+      <div class="actions">
+        <button class="modal-close">Отмена</button>
+        <button>OK</button>
+      </div>
     </div>
-    <div class="deleteTicket">
+    <div id="delete-ticket-modal" class="hidden modal">
       <span>Удалить тикет </span>
       <span>Вы уверены, что хотите удалить тикет? Это действие необратимо</span>
-      <button>OK</button>
-      <button>Отмена</button>
+      <div class="actions">
+        <button class="modal-close">Отмена</button>
+        <button>OK</button>
+      </div>
     </div>
   </body>
 </html>

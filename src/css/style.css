@@ -1,4 +1,4 @@
-#btn {
+button {
   border: none;
   padding: 15px 32px;
   text-align: center;
@@ -7,6 +7,7 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .ticket {
@@ -14,7 +15,7 @@
   flex-direction: row;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 10px;
   align-items: center;
 }
@@ -29,39 +30,42 @@
   padding: 10px;
 }
 
-.createTicket {
+.modal {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 10px;
+  background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 18px;
   margin-bottom: 10px;
   width: 300px;
   gap: 10px;
-  
+
   /* centered on screen */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: none;
 }
 
-.deleteTicket {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  width: 300px;
-  gap: 10px;
+.modal.actions {
+  flex-direction: row;
+  justify-content: flex-end;
+}
 
-  /* centered on screen */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#create-ticket-modal {
+  z-index: 1;
+}
+
+#edit-ticket-modal {
+  z-index: 2;
+}
+
+#add-ticket-button {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  opacity: 0;
 }
