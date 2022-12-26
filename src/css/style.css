@@ -1,0 +1,19 @@
+.ticket {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.description {
+  flex: 1;
+  padding: 10px;
+}
+
+.date {
+  flex: 0 0 100px;
+  padding: 10px;
+}
