@@ -37,10 +37,16 @@ app.use(async (ctx) => {
     if (ctx.request.query.method === "allTickets") {
         ctx.body = JSON.stringify(allTickets);
     }
+    if (ctx.request.query.method === "ticketById") {
+        const id = ctx.request.query.id;
+        const ticket = allTickets.find((ticket) => ticket.id == id);
+        console.log(id, ticket);
+        ctx.body = JSON.stringify(ticket);
+    }
 });
 
 
-// GET ?method=ticketById&id=<id> - полное описание тикета (где <id> - идентификатор тикета)
+
 // POST ?method=createTicket - создание тикета (<id> генерируется на сервере, в теле формы name, description, status)
 
 app.listen(3000);
