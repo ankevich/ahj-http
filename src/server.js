@@ -1,17 +1,46 @@
-const fs = require('fs');
-const http = require('http');
-const Koa = require('koa');
-const koaBody = require('koa-body');
-const koaStatic = require('koa-static');
-const path = require('path');
-const uuid = require('uuid');
+const fs = require("fs");
+const http = require("http");
+const Koa = require("koa");
+const koaBody = require("koa-body");
+const koaStatic = require("koa-static");
+const path = require("path");
+const uuid = require("uuid");
 
+
+const allTickets = [{
+    id: 1,
+    name: "Ticket 1",
+    description: "Description 1",
+    status: "open",
+    created: "2020-01-01",
+},
+{
+    id: 2,
+    name: "Ticket 2",
+    description: "Description 2",
+    status: "open",
+    created: "2020-01-01",
+}]
 
 const app = new Koa();
 
-app.use(async ctx => {
-  ctx.body = 'Hello Annie';
-  console.log('Hello Annie');
+// logger
+app.use(async (ctx, next) => {
+  await next();
+  console.log(
+    `Method: ${ctx.method}  URL: ${ctx.url} Query: ${ctx.request.querystring} `
+  );
 });
+
+// GET ?method=allTickets - список тикетов
+app.use(async (ctx) => {
+    if (ctx.request.query.method === "allTickets") {
+        ctx.body = JSON.stringify(allTickets);
+    }
+});
+
+
+// GET ?method=ticketById&id=<id> - полное описание тикета (где <id> - идентификатор тикета)
+// POST ?method=createTicket - создание тикета (<id> генерируется на сервере, в теле формы name, description, status)
 
 app.listen(3000);
