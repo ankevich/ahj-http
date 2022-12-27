@@ -12,7 +12,7 @@ const allTickets = [
     id: 1,
     name: "Ticket 1",
     description: "Description 1",
-    status: "open",
+    status: "closed",
     created: "2020-01-01",
   },
   {

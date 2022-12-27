@@ -21,13 +21,11 @@ const renderTicket = (ticket) => {
   const ticketElement = document.createElement("div");
   ticketElement.classList.add("ticket");
   ticketElement.innerHTML = `
-  <div class="ticket">
-  <div>${ticket.status == "open" ? "◻️" : "☑️"}</div>
+  <div>${ticket.status === "open" ? "◻️" : "☑️"}</div>
   <span class="description">${ticket.description}</span>
-  <span class="date">${ticket.date}</span>
+  <span class="date">${ticket.created}</span>
   <button>🖊️</button>
   <button>⚔️</button>
-</div>
   `;
   ticketsList.append(ticketElement);
 };
