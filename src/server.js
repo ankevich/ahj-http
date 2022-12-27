@@ -2,6 +2,7 @@ const fs = require("fs");
 const http = require("http");
 const Koa = require("koa");
 const { koaBody } = require("koa-body");
+const cors = require('@koa/cors')
 const koaStatic = require("koa-static");
 const path = require("path");
 const uuid = require("uuid");
@@ -25,6 +26,7 @@ const allTickets = [
 
 const app = new Koa();
 app.use(koaBody());
+app.use(cors());
 
 // Logger
 app.use(async (ctx, next) => {
