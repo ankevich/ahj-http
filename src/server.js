@@ -46,7 +46,6 @@ app.use(async (ctx) => {
   if (ctx.request.query.method === "ticketById") {
     const id = ctx.request.query.id;
     const ticket = allTickets.find((ticket) => ticket.id == id);
-    console.log(id, ticket);
     ctx.body = JSON.stringify(ticket);
   }
   

@@ -1,10 +1,32 @@
 const addTicketButton = document.querySelector("#add-ticket-button");
+const createTicketForm = document.querySelector("#create-ticket-form");
 const createTicketModal = document.querySelector("#create-ticket-modal");
 const ticketsList = document.querySelector("#tickets-list");
 
 addTicketButton.addEventListener("click", () => {
   createTicketModal.classList.remove("hidden");
 });
+
+createTicketForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const formData = new FormData(createTicketForm);
+  const name = formData.get("name");
+  const description = formData.get("description");
+  const response = await fetch("http://localhost:3000/?method=createTicket", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      description,
+    }),
+  });
+  const ticket = await response.json();
+  renderTicket(ticket);
+  createTicketModal.classList.add("hidden");
+});
+
 
 // Кнопки закрытия модальных окон
 document.querySelectorAll(".modal-close").forEach((closeButton) => {
@@ -16,7 +38,6 @@ document.querySelectorAll(".modal-close").forEach((closeButton) => {
 });
 
 //передать на страницу список тикетов с сервера
-
 const renderTicket = (ticket) => {
   const ticketElement = document.createElement("div");
   ticketElement.classList.add("ticket");
