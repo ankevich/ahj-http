@@ -20,7 +20,7 @@ button {
   align-items: center;
 }
 
-.description {
+.name {
   flex: 1;
   padding: 10px;
 }

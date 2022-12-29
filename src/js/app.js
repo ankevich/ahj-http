@@ -27,10 +27,10 @@ createTicketForm.addEventListener("submit", async (event) => {
   createTicketModal.classList.add("hidden");
 });
 
-
 // Кнопки закрытия модальных окон
 document.querySelectorAll(".modal-close").forEach((closeButton) => {
-  closeButton.addEventListener("click", () => {
+  closeButton.addEventListener("click", (e) => {
+    e.preventDefault();
     document.querySelectorAll(".modal").forEach((modal) => {
       modal.classList.add("hidden");
     });
@@ -56,8 +56,6 @@ const getTickets = async () => {
   const response = await fetch("http://localhost:3000/?method=allTickets");
   const tickets = await response.json();
   tickets.forEach(renderTicket);
-}
+};
 
 getTickets();
-
-
