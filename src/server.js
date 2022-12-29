@@ -2,7 +2,7 @@ const fs = require("fs");
 const http = require("http");
 const Koa = require("koa");
 const { koaBody } = require("koa-body");
-const cors = require('@koa/cors')
+const cors = require("@koa/cors");
 const koaStatic = require("koa-static");
 const path = require("path");
 const uuid = require("uuid");
@@ -37,26 +37,30 @@ app.use(async (ctx, next) => {
 });
 
 app.use(async (ctx) => {
-  // GET ?method=allTickets
-  if (ctx.request.query.method === "allTickets") {
-    ctx.body = JSON.stringify(allTickets);
-  }
+  var id, ticket;
+  switch (ctx.request.query.method) {
+    case "allTickets":
+      ctx.body = JSON.stringify(allTickets);
+      return;
 
-  // GET ?method=ticketById&id=<id>
-  if (ctx.request.query.method === "ticketById") {
-    const id = ctx.request.query.id;
-    const ticket = allTickets.find((ticket) => ticket.id == id);
-    ctx.body = JSON.stringify(ticket);
-  }
-  
-  // POST ?method=createTicket - создание тикета (<id> генерируется на сервере, в теле формы name, description, status)
-  if (ctx.request.query.method === "createTicket") {
-    const { name, description, status } = ctx.request.body;
-    const id = uuid.v4();
-    const created = new Date().toISOString().slice(0, 10);
-    const ticket = { id, name, description, status, created };
-    allTickets.push(ticket);
-    ctx.body = JSON.stringify(ticket);
+    case "ticketById":
+      id = ctx.request.query.id;
+      ticket = allTickets.find((ticket) => ticket.id == id);
+      ctx.body = JSON.stringify(ticket);
+      return;
+
+    case "createTicket":
+      id = uuid.v4();
+      const { name, description, status } = ctx.request.body;
+      const created = new Date().toISOString().slice(0, 10);
+      ticket = { id, name, description, status, created };
+      allTickets.push(ticket);
+      ctx.body = JSON.stringify(ticket);
+      return;
+
+    default:
+      ctx.response.status = 404;
+      return;
   }
 });
 
