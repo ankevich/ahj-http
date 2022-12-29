@@ -1,7 +1,14 @@
 const addTicketButton = document.querySelector("#add-ticket-button");
 const createTicketForm = document.querySelector("#create-ticket-form");
+const editTicketForm = document.querySelector("#create-ticket-form");
 const createTicketModal = document.querySelector("#create-ticket-modal");
 const ticketsList = document.querySelector("#tickets-list");
+
+// DRY - Don't Repeat Yourself
+// Then why do you repeat yourself?
+// You repeat words in your language all the time motherfucker!
+// Go read a book! It's called "Mythical man month" by Fred Brooks!
+
 
 addTicketButton.addEventListener("click", () => {
   createTicketModal.classList.remove("hidden");
@@ -39,17 +46,45 @@ document.querySelectorAll(".modal-close").forEach((closeButton) => {
 
 //передать на страницу список тикетов с сервера
 const renderTicket = (ticket) => {
+
   const ticketElement = document.createElement("div");
   ticketElement.classList.add("ticket");
-  ticketElement.innerHTML = `
-  <div>${ticket.status === "open" ? "◻️" : "☑️"}</div>
-  <span class="name">${ticket.name}</span>
-  <span class="date">${ticket.created}</span>
-  <button>🖊️</button>
-  <button>⚔️</button>
-  `;
+  
+  const statusElement = document.createElement("div");
+  statusElement.textContent = ticket.status === "open" ? "◻️" : "☑️";
+  ticketElement.appendChild(statusElement);
+
+  const nameElement = document.createElement("span");
+  nameElement.classList.add("name");
+  nameElement.textContent = ticket.name;
+  ticketElement.appendChild(nameElement);
+
+  const dateElement = document.createElement("span");
+  dateElement.classList.add("date");
+  dateElement.textContent = ticket.created;
+  ticketElement.appendChild(dateElement);
+
+  const editButton = document.createElement("button");
+  editButton.textContent = "🖊️";
+  editButton.addEventListener("click", () => {
+    editTicket(ticket.id, ticket.name, ticket.description);
+  });
+  ticketElement.appendChild(editButton);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "⚔️";
+  ticketElement.appendChild(deleteButton);
+
   ticketsList.append(ticketElement);
+  
 };
+
+function editTicket(id, name, description) {
+  editTicketForm.id.value = id;
+  editTicketForm.name.value = name;
+  editTicketForm.description.value = description;
+  createTicketModal.classList.remove("hidden");
+}
 
 //получить список тикетов с сервера
 const getTickets = async () => {

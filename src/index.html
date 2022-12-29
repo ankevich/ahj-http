@@ -23,6 +23,21 @@
           </div>
         </form>
       </div>
+      <div id="edit-ticket-modal" class="hidden modal">
+        <span>Изменить тикет</span>
+        <form id="edit-ticket-form">
+          <input name="name" type="text" placeholder="Описание" />
+          <textarea
+            name="description"
+            type="text"
+            placeholder="Подробное описание"
+          ></textarea>
+          <div class="actions">
+            <button class="modal-close">Отмена</button>
+            <button type="submit">Ok</button>
+          </div>
+        </form>
+      </div>
       <div id="delete-ticket-modal" class="hidden modal">
         <span>Удалить тикет </span>
         <span

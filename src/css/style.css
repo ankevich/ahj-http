@@ -34,6 +34,15 @@ button {
   padding: 10px;
 }
 
+form input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  min-width: 250px;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
