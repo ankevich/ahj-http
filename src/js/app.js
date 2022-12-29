@@ -1,6 +1,7 @@
 const addTicketButton = document.querySelector("#add-ticket-button");
 const createTicketForm = document.querySelector("#create-ticket-form");
-const editTicketForm = document.querySelector("#create-ticket-form");
+const editTicketForm = document.querySelector("#edit-ticket-form");
+const deleteTicketModal = document.querySelector("#delete-ticket-modal");
 const createTicketModal = document.querySelector("#create-ticket-modal");
 const ticketsList = document.querySelector("#tickets-list");
 
@@ -73,8 +74,11 @@ const renderTicket = (ticket) => {
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "⚔️";
+  deleteButton.addEventListener("click", () => {
+    deleteTicket(ticket.id);
+  });
+  
   ticketElement.appendChild(deleteButton);
-
   ticketsList.append(ticketElement);
   
 };
@@ -84,6 +88,10 @@ function editTicket(id, name, description) {
   editTicketForm.name.value = name;
   editTicketForm.description.value = description;
   createTicketModal.classList.remove("hidden");
+}
+
+function deleteTicket(id) {
+  deleteTicketModal.classList.remove("hidden");
 }
 
 //получить список тикетов с сервера
