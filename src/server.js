@@ -10,14 +10,14 @@ const uuid = require("uuid");
 const allTickets = [
   {
     id: 1,
-    name: "Ticket 1",
+    name: "Поменять краску в принтере, ком. 404",
     description: "Description 1",
     status: "closed",
     created: "2020-01-01",
   },
   {
     id: 2,
-    name: "Ticket 2",
+    name: "Переустановить винду",
     description: "Description 2",
     status: "open",
     created: "2020-01-01",

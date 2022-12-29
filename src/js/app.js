@@ -43,7 +43,7 @@ const renderTicket = (ticket) => {
   ticketElement.classList.add("ticket");
   ticketElement.innerHTML = `
   <div>${ticket.status === "open" ? "◻️" : "☑️"}</div>
-  <span class="description">${ticket.description}</span>
+  <span class="name">${ticket.name}</span>
   <span class="date">${ticket.created}</span>
   <button>🖊️</button>
   <button>⚔️</button>
