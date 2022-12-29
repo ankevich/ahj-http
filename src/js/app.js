@@ -5,12 +5,6 @@ const deleteTicketModal = document.querySelector("#delete-ticket-modal");
 const createTicketModal = document.querySelector("#create-ticket-modal");
 const ticketsList = document.querySelector("#tickets-list");
 
-// DRY - Don't Repeat Yourself
-// Then why do you repeat yourself?
-// You repeat words in your language all the time motherfucker!
-// Go read a book! It's called "Mythical man month" by Fred Brooks!
-
-
 addTicketButton.addEventListener("click", () => {
   createTicketModal.classList.remove("hidden");
 });
@@ -47,10 +41,9 @@ document.querySelectorAll(".modal-close").forEach((closeButton) => {
 
 //передать на страницу список тикетов с сервера
 const renderTicket = (ticket) => {
-
   const ticketElement = document.createElement("div");
   ticketElement.classList.add("ticket");
-  
+
   const statusElement = document.createElement("div");
   statusElement.textContent = ticket.status === "open" ? "◻️" : "☑️";
   ticketElement.appendChild(statusElement);
@@ -59,6 +52,11 @@ const renderTicket = (ticket) => {
   nameElement.classList.add("name");
   nameElement.textContent = ticket.name;
   ticketElement.appendChild(nameElement);
+
+  const descriptionElement = document.createElement("div");
+  descriptionElement.classList.add("description", "hidden");
+  descriptionElement.textContent = ticket.description;
+  ticketElement.appendChild(descriptionElement);
 
   const dateElement = document.createElement("span");
   dateElement.classList.add("date");
@@ -77,10 +75,14 @@ const renderTicket = (ticket) => {
   deleteButton.addEventListener("click", () => {
     deleteTicket(ticket.id);
   });
-  
+
   ticketElement.appendChild(deleteButton);
+
+  ticketElement.addEventListener("click", () => {
+    descriptionElement.classList.toggle("hidden");
+  });
+
   ticketsList.append(ticketElement);
-  
 };
 
 function editTicket(id, name, description) {
