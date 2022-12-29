@@ -1,8 +1,13 @@
 const addTicketButton = document.querySelector("#add-ticket-button");
-const createTicketForm = document.querySelector("#create-ticket-form");
-const editTicketForm = document.querySelector("#edit-ticket-form");
-const deleteTicketModal = document.querySelector("#delete-ticket-modal");
+
 const createTicketModal = document.querySelector("#create-ticket-modal");
+const createTicketForm = document.querySelector("#create-ticket-form");
+
+const editTicketModal = document.querySelector("#edit-ticket-modal");
+const editTicketForm = document.querySelector("#edit-ticket-form");
+
+const deleteTicketModal = document.querySelector("#delete-ticket-modal");
+
 const ticketsList = document.querySelector("#tickets-list");
 
 addTicketButton.addEventListener("click", () => {
@@ -89,7 +94,7 @@ function editTicket(id, name, description) {
   editTicketForm.id.value = id;
   editTicketForm.name.value = name;
   editTicketForm.description.value = description;
-  createTicketModal.classList.remove("hidden");
+  editTicketModal.classList.remove("hidden");
 }
 
 function deleteTicket(id) {
