@@ -5,29 +5,33 @@
     <title>App</title>
   </head>
   <body>
-    <button id="add-ticket-button">Добавить тикет</button>
-    <div id="tickets-list"></div>
-    <div id="create-ticket-modal" class="hidden modal">
-      <span>Добавить тикет</span>
-      <form id="create-ticket-form">
-        <input name="name" type="text" placeholder="Описание" />
-        <textarea
-          name="description"
-          type="text"
-          placeholder="Подробное описание"
-        ></textarea>
+    <div class="container">
+      <button id="add-ticket-button">Добавить тикет</button>
+      <div id="tickets-list"></div>
+      <div id="create-ticket-modal" class="hidden modal">
+        <span>Добавить тикет</span>
+        <form id="create-ticket-form">
+          <input name="name" type="text" placeholder="Описание" />
+          <textarea
+            name="description"
+            type="text"
+            placeholder="Подробное описание"
+          ></textarea>
+          <div class="actions">
+            <button class="modal-close">Отмена</button>
+            <button type="submit">Ok</button>
+          </div>
+        </form>
+      </div>
+      <div id="delete-ticket-modal" class="hidden modal">
+        <span>Удалить тикет </span>
+        <span
+          >Вы уверены, что хотите удалить тикет? Это действие необратимо</span
+        >
         <div class="actions">
           <button class="modal-close">Отмена</button>
-          <button type="submit">Ok</button>
+          <button>OK</button>
         </div>
-      </form>
-    </div>
-    <div id="delete-ticket-modal" class="hidden modal">
-      <span>Удалить тикет </span>
-      <span>Вы уверены, что хотите удалить тикет? Это действие необратимо</span>
-      <div class="actions">
-        <button class="modal-close">Отмена</button>
-        <button>OK</button>
       </div>
     </div>
   </body>

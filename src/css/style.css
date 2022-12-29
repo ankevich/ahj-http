@@ -1,3 +1,7 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
 button {
   border: none;
   padding: 15px 32px;
@@ -63,7 +67,8 @@ button {
 }
 
 #add-ticket-button {
-  margin-bottom: 10px;
+  margin: 10px;
+  align-self: flex-end;
 }
 
 .hidden {
