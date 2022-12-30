@@ -1,23 +1,23 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     open: true,
-    host: "localhost",
+    host: 'localhost',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: 'src/index.html',
     }),
 
     new MiniCssExtractPlugin(),
@@ -29,19 +29,19 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg)$/,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
       {
         test: /\.(js|jsx)$/i,
-        loader: "babel-loader",
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, "css-loader"],
+        use: [stylesHandler, 'css-loader'],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "asset",
+        type: 'asset',
       },
 
       // Add your rules for custom modules here
